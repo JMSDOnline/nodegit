@@ -33,11 +33,13 @@ fse.remove(path.resolve(__dirname, repoDir))
   return repository.openIndex();
 })
 .then(function(index) {
-  index.read(1);
-  index.addByPath(fileName);
-  index.write();
-
-  return index.writeTree();
+  return index.addByPath(fileName)
+    .then(function() {
+      return index.write();
+    })
+    .then(function() {
+      return index.writeTree();
+    });
 })
 .then(function(oid) {
   return repository.createCommit("HEAD", signature, signature,

@@ -24,7 +24,6 @@ fse.ensureDir(path.resolve(__dirname, repoDir))
 })
 .then(function(idx) {
   index = idx;
-  return index.read(1);
 })
 .then(function() {
   return index.addByPath(fileName);
