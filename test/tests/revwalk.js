@@ -253,13 +253,17 @@ describe("Revwalk", function() {
         );
       })
       .then(function() {
-        return repo.openIndex()
-          .then(function(index) {
-            index.read(1);
-            index.addByPath(fileNameB);
-            index.removeByPath(fileNameA);
-            index.write();
-
+        return repo.openIndex();
+      })
+      .then(function(index) {
+        return index.addByPath(fileNameB)
+          .then(function() {
+            return index.removeByPath(fileNameA);
+          })
+          .then(function() {
+            return index.write();
+          })
+          .then(function() {
             return index.writeTree();
           });
       })

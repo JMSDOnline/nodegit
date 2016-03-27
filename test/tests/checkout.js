@@ -128,11 +128,13 @@ describe("Checkout", function() {
 
       return test.repository.openIndex()
         .then(function(index) {
-          index.read(1);
-          index.addByPath(packageJsonName);
-          index.write();
-
-          return index.writeTree();
+          return index.addByPath(packageJsonName)
+            .then(function() {
+              return index.write();
+            })
+            .then(function() {
+              return index.writeTree();
+            });
         });
     })
     .then(function(oid) {

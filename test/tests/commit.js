@@ -59,7 +59,6 @@ describe("Commit", function() {
     })
     .then(function(indexResult) {
       index = indexResult;
-      return index.read(1);
     })
     .then(function() {
       return index.addByPath(fileName);
@@ -166,7 +165,6 @@ describe("Commit", function() {
     })
     .then(function(indexResult) {
       index = indexResult;
-      return index.read(1);
     })
     .then(function() {
       return index.addByPath(fileName);
@@ -246,7 +244,6 @@ describe("Commit", function() {
     })
     .then(function(indexResult) {
       index = indexResult;
-      return index.read(1);
     })
     .then(function() {
       return index.addByPath(fileName);
@@ -294,7 +291,6 @@ describe("Commit", function() {
     })
     .then(function(indexResult) {
       index = indexResult;
-      return index.read(1);
     })
     .then(function() {
       return index.addByPath(newFileName);
